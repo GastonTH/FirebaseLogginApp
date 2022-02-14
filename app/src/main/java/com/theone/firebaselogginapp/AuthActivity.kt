@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -16,6 +17,8 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.installations.FirebaseInstallations
+import com.google.firebase.messaging.FirebaseMessaging
 import com.theone.firebaselogginapp.databinding.ActivityAuthBinding
 import java.security.Provider
 
@@ -49,9 +52,20 @@ class AuthActivity : AppCompatActivity() {
         btnGoogleLog = binding.btnGoogleLog
 
         // Setup
+        notification()
         setup()
         session()
 
+    }
+
+
+
+    private fun notification() {
+        FirebaseMessaging.getInstance().token.addOnSuccessListener { result ->
+
+            System.out.println("RESULT --> " + result)
+
+        }
     }
 
     override fun onStart() {
