@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FirebaseLogginApp</string>
+    <string name="pref_file_name">com.theone.firebaselog.PREF_FILE</string>
+</resources>
